@@ -33,41 +33,41 @@ endif
 
 # Copy over the changelog to the device
 PRODUCT_COPY_FILES += \
-    vendor/cm/CHANGELOG.mkdn:system/etc/CHANGELOG-CM.txt
+    vendor/custom_rom/CHANGELOG.mkdn:system/etc/CHANGELOG-CM.txt
 
 # Backup Tool
 PRODUCT_COPY_FILES += \
-    vendor/cm/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
-    vendor/cm/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
-    vendor/cm/prebuilt/common/bin/50-cm.sh:system/addon.d/50-cm.sh \
-    vendor/cm/prebuilt/common/bin/blacklist:system/addon.d/blacklist
+    vendor/custom_rom/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
+    vendor/custom_rom/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
+    vendor/custom_rom/prebuilt/common/bin/50-cm.sh:system/addon.d/50-cm.sh \
+    vendor/custom_rom/prebuilt/common/bin/blacklist:system/addon.d/blacklist
 
 # Backup Services whitelist
 PRODUCT_COPY_FILES += \
-    vendor/cm/config/permissions/backup.xml:system/etc/sysconfig/backup.xml
+    vendor/custom_rom/config/permissions/backup.xml:system/etc/sysconfig/backup.xml
 
 # Signature compatibility validation
 PRODUCT_COPY_FILES += \
-    vendor/cm/prebuilt/common/bin/otasigcheck.sh:install/bin/otasigcheck.sh
+    vendor/custom_rom/prebuilt/common/bin/otasigcheck.sh:install/bin/otasigcheck.sh
 
 # init.d support
 PRODUCT_COPY_FILES += \
-    vendor/cm/prebuilt/common/etc/init.d/00banner:system/etc/init.d/00banner \
-    vendor/cm/prebuilt/common/bin/sysinit:system/bin/sysinit
+    vendor/custom_rom/prebuilt/common/etc/init.d/00banner:system/etc/init.d/00banner \
+    vendor/custom_rom/prebuilt/common/bin/sysinit:system/bin/sysinit
 
 ifneq ($(TARGET_BUILD_VARIANT),user)
 # userinit support
 PRODUCT_COPY_FILES += \
-    vendor/cm/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit
+    vendor/custom_rom/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit
 endif
 
 # CM-specific init file
 PRODUCT_COPY_FILES += \
-    vendor/cm/prebuilt/common/etc/init.local.rc:root/init.cm.rc
+    vendor/custom_rom/prebuilt/common/etc/init.local.rc:root/init.cm.rc
 
 # Copy over added mimetype supported in libcore.net.MimeUtils
 PRODUCT_COPY_FILES += \
-    vendor/cm/prebuilt/common/lib/content-types.properties:system/lib/content-types.properties
+    vendor/custom_rom/prebuilt/common/lib/content-types.properties:system/lib/content-types.properties
 
 # Enable SIP+VoIP on all targets
 PRODUCT_COPY_FILES += \
@@ -79,16 +79,16 @@ PRODUCT_COPY_FILES += \
 
 # This is CM!
 PRODUCT_COPY_FILES += \
-    vendor/cm/config/permissions/com.cyanogenmod.android.xml:system/etc/permissions/com.cyanogenmod.android.xml
+    vendor/custom_rom/config/permissions/com.cyanogenmod.android.xml:system/etc/permissions/com.cyanogenmod.android.xml
 
 # Include CM audio files
-include vendor/cm/config/cm_audio.mk
+include vendor/custom_rom/config/cm_audio.mk
 
 # Theme engine
-include vendor/cm/config/themes_common.mk
+include vendor/custom_rom/config/themes_common.mk
 
 # CMSDK
-include vendor/cm/config/cmsdk_common.mk
+include vendor/custom_rom/config/cmsdk_common.mk
 
 # Bootanimation
 PRODUCT_PACKAGES += \
@@ -220,7 +220,7 @@ PRODUCT_PACKAGES += \
 endif
 endif
 
-DEVICE_PACKAGE_OVERLAYS += vendor/cm/overlay/common
+DEVICE_PACKAGE_OVERLAYS += vendor/custom_rom/overlay/common
 
 PRODUCT_VERSION_MAJOR = 13
 PRODUCT_VERSION_MINOR = 0
@@ -308,7 +308,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
   ro.modversion=$(LINEAGE_VERSION) \
   ro.cmlegal.url=https://lineageos.org/legal
 
--include vendor/cm-priv/keys/keys.mk
+-include vendor/custom_rom-priv/keys/keys.mk
 
 CM_DISPLAY_VERSION := $(LINEAGE_VERSION)
 
